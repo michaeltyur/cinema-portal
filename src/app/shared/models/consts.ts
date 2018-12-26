@@ -1,0 +1,16 @@
+export const moviesName: string[]=['The Wizard of Oz',
+                         'Citizen Kane',
+                         'Get Out',
+                          'The Green Mile',
+                        //  'The Mist',
+                        //  'Thinner',
+                        //  'The Shawshank Redemption',
+                        //  'Stand by Me',
+                        //  'The Shining',
+                        //  'Pet Sematary',
+                        //  'It',
+                        //  'The Dead Zone',
+                        //  'Secret Window',
+                        //  'The Running Man',
+                        //  "Salem's Lot"
+                    ];

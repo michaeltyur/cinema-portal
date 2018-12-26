@@ -17,7 +17,7 @@ export interface Movie{
     language: string;
     country: string;
     awards: string;
-    poster: string;
+    Poster: string;
     ratings:Array<Rating>;
     metascore: string;
     imdbRating: number
@@ -25,5 +25,5 @@ export interface Movie{
     imdbID: string;
     seriesID: string;
     type: string;
-    response: boolean
+    Response: string
 }
