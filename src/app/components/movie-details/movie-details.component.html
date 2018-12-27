@@ -1,0 +1,131 @@
+
+<form [formGroup]="movieForm">
+  <div class="modal-header">
+    <input formControlName="title"
+           type="text" 
+           class="form-control form-control-lg" 
+           id="titleInput" 
+           value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"
+           [ngStyle]="{'border-color':title.invalid ? 'red' : '#ced4da' }"> 
+  </div>
+  <div class="modal-body row">
+    <div class="container">
+      <div class="row">
+    <!-- Image -->
+    <div class="col-auto">
+      <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+    </div>
+
+    <!-- Id -->
+    <div class="col-8">
+        <div class="form-group row">
+          <label for="idFormInput" 
+                 class="col-sm-2 col-form-label">Id</label>
+          <div class="col-sm-10">
+            <input type="text" 
+                   class="form-control" 
+                   id="idFormInput" 
+                   value="{{movie.id}}"
+                   disabled>
+          </div>
+      </div>
+        <!-- Year -->
+        <div class="form-group row">
+            <label for="yearFormInput" class="col-sm-2 col-form-label">Year</label>
+            <div class="col-sm-10">
+              <input formControlName="year"
+                     type="number" 
+                     class="form-control" 
+                     id="yearFormInput" 
+                     value="{{movie.year}}"
+                     [ngStyle]="{'border-color':year.invalid ? 'red' : '#ced4da' }">
+            </div>
+        </div>
+        <!-- Runtime -->
+        <div class="form-group row">
+            <label for="runtimeFormInput" 
+                   class="col-sm-2 col-form-label">Runtime</label>
+            <div class="col-sm-10">
+              <div class="input-group mb-3">
+                <input formControlName="runtime"
+                                   type="number" 
+                                   class="form-control" 
+                                   id="runtimeFormInput" 
+                                   value="{{movie.runtime | runtimeToNumber}}"
+                                   [ngStyle]="{'border-color':runtime.invalid ? 'red' : '#ced4da' }">
+                <div class="input-group-append">
+                  <span class="input-group-text" 
+                        id="basic-addon2">minutes</span>
+                </div>
+              </div>
+            </div>
+        </div>
+          <!-- Genre -->
+          <div class="form-group row">
+              <label for="genreFormInput" 
+                     class="col-sm-2 col-form-label">Genre</label>
+              <div class="col-sm-10">
+                <input formControlName="genre"
+                       type="text"
+                       class="form-control" 
+                       id="genreFormInput" 
+                       value="{{movie.genre}}"
+                       [ngStyle]="{'border-color':genre.invalid ? 'red' : '#ced4da' }">
+              </div>
+          </div>
+          <!-- Director -->
+          <div class="form-group row">
+              <label for="directorFormInput" class="col-sm-2 col-form-label">Director</label>
+              <div class="col-sm-10">
+                <textarea  formControlName="director"
+                           type="text"
+                           class="form-control" 
+                           id="directorFormInput" 
+                           value="{{movie.director}}"
+                           [ngStyle]="{'border-color':director.invalid ? 'red' : '#ced4da' }"></textarea>
+              </div>
+          </div>
+
+
+    </div> 
+      </div>
+      <div class="row">
+        <div class="col">
+           <!-- Image Url -->
+   <div class="form-group row">
+      <label for="posterFormInput" class="col-sm-2 col-form-label">Image Url</label>
+      <div class="col-sm-10">
+        <textarea  formControlName="poster"
+                   type="text"
+                   class="form-control" 
+                   id="posterFormInput" 
+                   value="{{movie.poster}}"></textarea>
+      </div>
+  </div>
+        </div>
+  
+      </div>
+    </div>
+   
+  </div>
+  <div class="modal-footer">
+    <div class="row container-fluid text-center">
+      <div class="col-4">
+        <button type="button" 
+                class="btn btn-outline-danger" 
+                (click)="delete()">Delete</button>
+      </div>
+            <div class="col-4">
+              <button type="button" 
+                      class="btn btn-outline-success" 
+                      (click)="update()">Save</button>
+            </div>
+      <div class="col-4">
+          <button type="button" 
+                  class="btn btn-outline-dark" 
+                  (click)="activeModal.close('Close click')">Close</button>
+      </div>
+    </div>
+  </div>
+</form>
+

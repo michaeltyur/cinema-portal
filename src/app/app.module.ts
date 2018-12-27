@@ -1,29 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { HoverDirective } from './directives/hover.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './components/movies/movies.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { RuntimeToNumberPipe } from './pipes/runtime-to-number.pipe';
+import { TitlePipe } from './pipes/title.pipe';
+import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    HoverDirective
+    HoverDirective,
+    MovieDetailsComponent,
+    RuntimeToNumberPipe,
+    TitlePipe,
+    RemoveNonEnglishLetterPipe
   ],
   imports: [
     BrowserModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
-    HttpClientModule
-    
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
+  entryComponents: [MovieDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

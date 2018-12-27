@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable,of } from 'rxjs';
 import { Movie } from '../shared/models/movie';
@@ -16,24 +16,35 @@ export class MovieService {
   private baseUrl = 'http://www.omdbapi.com?plot=full';
   private apiKey ="apikey=c391d863";
   private movieId='tt';
+  movieRemovingEmitter$:EventEmitter<Movie>;
 
   constructor(private http: HttpClient) {
-
+    this.movieRemovingEmitter$=new EventEmitter();
    }
 
-  getRandomMovie():Observable<Movie>{
-    let id= this.getRundomMovieId();
-    const url = `${this.baseUrl}&i=${id}&${this.apiKey}`;
-   return this.http.get<Movie>(url);
-  }
 
   getMovieByName(title:string):Observable<Movie>{
     const url = `${this.baseUrl}&t=${title}&${this.apiKey}`;
-    return this.http.get<Movie>(url);
+    return this.http.get<Movie>(url).pipe(map((res:Object)=>
+    {
+      let movie= new Movie();
+          movie.id=res['imdbID'];
+          movie.title=res['Title'];
+          movie.director=res['Director'];
+          movie.genre=res['Genre'];
+          movie.poster=res['Poster'];
+          movie.response=res['Response'];
+          movie.runtime=res['Runtime'];
+          movie.year=res['Year'];
+      return movie;
+    }
+    ));
   }
 
-  private getRundomMovieId():string{
-   let randNumber= Math.floor(Math.random() * 1999999) + 1  ;
-   return `tt${randNumber}`;
+  emitMovieRemoving(movie:Movie):void{
+    if (movie) {
+      this.movieRemovingEmitter$.emit(movie);
+    }
+    
   }
 }
