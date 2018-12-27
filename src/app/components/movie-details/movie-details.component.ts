@@ -3,6 +3,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-movie-details',
@@ -16,7 +17,8 @@ export class MovieDetailsComponent implements OnInit {
  movieForm : FormGroup;
 
   constructor(private movieService:MovieService,
-              public activeModal: NgbActiveModal)
+              public activeModal: NgbActiveModal,
+              private modalService: NgbModal)
  { 
   this.movieForm=new FormGroup({
     title: new FormControl('',Validators.compose([ 
@@ -58,10 +60,14 @@ export class MovieDetailsComponent implements OnInit {
     return this.movieForm.get('poster');
   }
 
-  delete():void{
-   if (this.movie) {
-    this.movieService.emitMovieRemoving(this.movie);
-    this.movie=undefined;
-   }
-  }
+  deleteConfirmation(){
+    const modalRef = this.modalService.open(DeleteConfirmationComponent, { size: 'sm' });
+    modalRef.componentInstance.movie = this.movie;
+    modalRef.result.then(result=>{
+      if (result==='delete click') {
+        this.movieService.emitMovieRemoving(this.movie);
+        this.modalService.dismissAll();
+      }
+    })
+ }
 }

@@ -12,6 +12,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { RuntimeToNumberPipe } from './pipes/runtime-to-number.pipe';
 import { TitlePipe } from './pipes/title.pipe';
 import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pipe';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pi
     MovieDetailsComponent,
     RuntimeToNumberPipe,
     TitlePipe,
-    RemoveNonEnglishLetterPipe
+    RemoveNonEnglishLetterPipe,
+    DeleteConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,10 @@ import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pi
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [MovieDetailsComponent],
+  entryComponents: [
+    MovieDetailsComponent,
+    DeleteConfirmationComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
