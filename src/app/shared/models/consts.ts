@@ -14,3 +14,9 @@ export const moviesName: string[]=['The Wizard of Oz',
                         //  'The Running Man',
                         //  "Salem's Lot"
                     ];
+export const yearMinValue:number=1900;
+export const yearMaxValue:number=2019;
+export const runtimeMinValue:number=1;
+export const runtimeMaxValue:number=300;
+
+                    

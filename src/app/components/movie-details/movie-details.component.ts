@@ -4,6 +4,9 @@ import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import{ yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
+import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
+
 
 @Component({
   selector: 'app-movie-details',
@@ -13,34 +16,50 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
 export class MovieDetailsComponent implements OnInit {
 
  @Input() movie:Movie;
-
  movieForm : FormGroup;
+ yearMinValue:number;
+ yearMaxValue:number;
+ runtimeMinValue:number;
+ runtimeMaxValue:number;
 
   constructor(private movieService:MovieService,
               public activeModal: NgbActiveModal,
               private modalService: NgbModal)
  { 
-  this.movieForm=new FormGroup({
-    title: new FormControl('',Validators.compose([ 
-                              Validators.required, 
-                              Validators.minLength(2)])),
-    year: new FormControl('', Validators.compose([
-                              Validators.required,
-                              Validators.min(1900),
-                              Validators.max(2019) ])),
-    runtime: new FormControl('', Validators.compose([
-                                 Validators.required,
-                                 Validators.min(1),
-                                 Validators.max(250) ])),
-    genre: new FormControl('',Validators.required),
-    director: new FormControl('',Validators.required),
-    poster: new FormControl('',Validators.required)
- });
-
+  this.yearMinValue=yearMinValue;
+  this.yearMaxValue=yearMaxValue;
+  this.runtimeMinValue=runtimeMinValue;
+  this.runtimeMaxValue=runtimeMaxValue;
  }
 
-  ngOnInit() {}
+  ngOnInit() {
 
+    if (this.movie.id==="") {
+      this.movie.id=this.movieService.getRandomId()
+    }
+
+     this.movieForm=new FormGroup({
+    id:new FormControl(this.movie.id),
+    title: new FormControl(this.movie.title, Validators.compose([ 
+                              Validators.required, 
+                              ValidateTitleNotExist.createValidator(this.movieService,this.movie.title),                              
+                              Validators.minLength(2)])),
+    year: new FormControl(this.movie.year, Validators.compose([
+                              Validators.required,
+                              Validators.min(yearMinValue),
+                              Validators.max(yearMaxValue) ])),
+    runtime: new FormControl(this.movie.runtime, Validators.compose([
+                                 Validators.required,
+                                 Validators.min(runtimeMinValue),
+                                 Validators.max(runtimeMaxValue) ])),
+    genre: new FormControl(this.movie.genre, Validators.required),
+    director: new FormControl(this.movie.director, Validators.required),
+    poster: new FormControl(this.movie.poster, Validators.required)
+    });
+  }
+  get id() {
+    return this.movieForm.get('id');
+  }
   get title() {
     return this.movieForm.get('title');
   }
@@ -70,4 +89,15 @@ export class MovieDetailsComponent implements OnInit {
       }
     })
  }
+
+ updateMovie():void{
+    if (this.movieForm.valid) {
+      if (this.title.value!=this.movie.title) {
+          this.movieService.emitMovieUpdater(this.movieForm.value);
+          this.modalService.dismissAll();           
+      }      
+    }
+ }
+
+ 
 }

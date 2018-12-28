@@ -18,12 +18,31 @@ export class MoviesComponent implements OnInit {
   selectedMovie:Movie;
 
   constructor(private movieService:MovieService,
-              private modalService: NgbModal) { 
+              private modalService: NgbModal) 
+  { 
     this.movies=[];
-  }
+    movieService.movieRemovingEmitter$.subscribe((res:Movie)=>{
+      if (res) {
+        this.movies=this.movies.filter(film=>film.id!=res.id);
+        this.selectedMovie=undefined;
+      }});
 
+      movieService.movieUpdateEmitter$.subscribe(res=>
+      {
+        this.updateMovie(res);
+      });
+  
+  }
   ngOnInit() {
     this.getListOfMovies();
+  }
+
+  updateMovie(movie:Movie){
+   if (movie) {
+     let index=this.movies.findIndex(film=>film.id==movie.id);
+
+     this.movies[index]=movie;
+   }  
   }
 
    getListOfMovies():void{
@@ -41,6 +60,9 @@ export class MoviesComponent implements OnInit {
       const modalRef = this.modalService.open(MovieDetailsComponent, { size: 'lg' });
       modalRef.componentInstance.movie = movie;
     }
-    
+  }
+  newMovie():void{
+        let newMovie=new Movie();
+        this.getMovieDetails(newMovie);
   }
 }

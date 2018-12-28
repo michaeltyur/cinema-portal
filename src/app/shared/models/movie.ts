@@ -7,5 +7,13 @@ export class Movie{
     genre: string
     director: string;
     poster: string;
-    response: string
+
+    constructor(){
+        this.id='';
+        this.title='';
+        this.runtime='';
+        this.genre==''; 
+        this.director='';
+        this.poster='../../assets/No_Image_Available.jpg'; 
+    }
 }

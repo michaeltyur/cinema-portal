@@ -13,6 +13,7 @@ import { RuntimeToNumberPipe } from './pipes/runtime-to-number.pipe';
 import { TitlePipe } from './pipes/title.pipe';
 import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pipe';
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
+import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DeleteConfirmationComponent } from './components/delete-confirmation/de
     RuntimeToNumberPipe,
     TitlePipe,
     RemoveNonEnglishLetterPipe,
+    ImageUrlPipe,
     DeleteConfirmationComponent
   ],
   imports: [

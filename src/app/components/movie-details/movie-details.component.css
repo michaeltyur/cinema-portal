@@ -2,3 +2,13 @@ img{
     width: 198px;
     border-radius: 10px;
 }
+.validation-alert-title{
+    position: absolute;
+    top:5px;
+    color: red;
+}
+.validation-alert{
+    position: absolute;
+    top:-23px;
+    color: red;
+}

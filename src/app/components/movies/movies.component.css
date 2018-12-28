@@ -7,3 +7,9 @@
     font-style: italic;
     text-align: center;
 }
+img{
+    border-radius: 10px !important;
+}
+.card{
+    border-radius: 10px !important;
+}
