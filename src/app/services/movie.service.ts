@@ -40,7 +40,6 @@ export class MovieService {
     }
     ));
   }
-
   emitMovieRemoving(movie:Movie):void{
     if (movie) {
       this.movieRemovingEmitter$.emit(movie);

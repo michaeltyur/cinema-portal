@@ -2,7 +2,7 @@ import { Component, OnInit,Input  } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
-import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import{ yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
 import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
@@ -24,7 +24,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(private movieService:MovieService,
               public activeModal: NgbActiveModal,
-              private modalService: NgbModal)
+              private modalService: NgbModal,
+             private fb: FormBuilder)
  { 
   this.yearMinValue=yearMinValue;
   this.yearMaxValue=yearMaxValue;
@@ -38,23 +39,19 @@ export class MovieDetailsComponent implements OnInit {
       this.movie.id=this.movieService.getRandomId()
     }
 
-     this.movieForm=new FormGroup({
-    id:new FormControl(this.movie.id),
-    title: new FormControl(this.movie.title, Validators.compose([ 
-                              Validators.required, 
-                              ValidateTitleNotExist.createValidator(this.movieService,this.movie.title),                              
-                              Validators.minLength(2)])),
-    year: new FormControl(this.movie.year, Validators.compose([
-                              Validators.required,
+     this.movieForm=this.fb.group({
+    id:[this.movie.id],
+    title:   [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
+                              ValidateTitleNotExist.createValidator(this.movieService)],                                                          
+    year:    [this.movie.year, [  Validators.required,
                               Validators.min(yearMinValue),
-                              Validators.max(yearMaxValue) ])),
-    runtime: new FormControl(this.movie.runtime, Validators.compose([
-                                 Validators.required,
-                                 Validators.min(runtimeMinValue),
-                                 Validators.max(runtimeMaxValue) ])),
-    genre: new FormControl(this.movie.genre, Validators.required),
-    director: new FormControl(this.movie.director, Validators.required),
-    poster: new FormControl(this.movie.poster, Validators.required)
+                              Validators.max(yearMaxValue) ]],
+    runtime: [this.movie.runtime, [ Validators.required,
+                                    Validators.min(runtimeMinValue),
+                                    Validators.max(runtimeMaxValue) ]],
+    genre:   [this.movie.genre, Validators.required],
+    director: [this.movie.director, Validators.required],
+    poster: [this.movie.poster, Validators.required]
     });
   }
   get id() {

@@ -4,6 +4,12 @@
     <span class="validation-alert-title" *ngIf="title.errors?.required">
         Title is required
     </span>
+    <span class="validation-alert-title process" *ngIf="title.status==='PENDING'">
+        Checking...
+    </span>
+    <span class="validation-alert-title success" *ngIf="title.status==='VALID'">
+        Title is available
+    </span>
     <span class="validation-alert-title" *ngIf="title.errors?.titleExist">
         Title already exists
     </span>
@@ -12,7 +18,7 @@
            class="form-control form-control-lg mt-3" 
            id="titleInput" 
            value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"
-           [ngStyle]="{'border-color':title.invalid ? 'red' : '#ced4da' }"> 
+           [ngStyle]="{'border-color':title.valid||title.value===movie.title ? '#ced4da' : 'red' }"> 
   </div>
   <div class="modal-body row">
     <div class="container">
