@@ -7,10 +7,10 @@
     <span class="validation-alert-title process" *ngIf="title.status==='PENDING'">
         Checking...
     </span>
-    <span class="validation-alert-title success" *ngIf="title.status==='VALID'">
+    <span class="validation-alert-title success" *ngIf="title.status==='VALID'&&title.value!==movie.title">
         Title is available
     </span>
-    <span class="validation-alert-title" *ngIf="title.errors?.titleExist">
+    <span class="validation-alert-title" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
         Title already exists
     </span>
     <input formControlName="title"
@@ -129,7 +129,7 @@
       </div>
       <div class="row ">
         <div class="col">
-           <!-- Image Url -->
+   <!-- Image Url -->
    <div class="form-group row mt-3">
       <label for="posterFormInput" class="col-sm-2 col-form-label">Image Url</label>
       <div class="col-sm-10">
@@ -141,6 +141,7 @@
                    class="form-control" 
                    id="posterFormInput" 
                    value="{{movie.poster | localImageUrlHider}}"
+                   (keyup)="setMovieImage(poster.value)"
                    [ngStyle]="{'border-color':poster.invalid ? 'red' : '#ced4da' }"></textarea>
       </div>
   </div>
@@ -152,21 +153,25 @@
   </div>
   <div class="modal-footer">
     <div class="row container-fluid text-center">
-      <div class="col-4">
+      
         <button type="button" 
-                class="btn btn-outline-danger" 
+                class="col-4 btn btn-outline-danger" 
+                appButtonHover
                 (click)="deleteConfirmation()">Delete</button>
-      </div>
-            <div class="col-4">
+     
+            
               <button type="button" 
-                      class="btn btn-outline-success" 
+                      class="col-4 btn btn-outline-success" 
+                      [disabled]="!movieForm.valid"
+                      appButtonHover
                       (click)="updateMovie()">Save</button>
-            </div>
-      <div class="col-4">
+            
+      
           <button type="button" 
-                  class="btn btn-outline-dark" 
+                  class="col-4 btn btn-outline-dark" 
+                  appButtonHover
                   (click)="activeModal.close('Close click')">Close</button>
-      </div>
+      
     </div>
   </div>
 </form>

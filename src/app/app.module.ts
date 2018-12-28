@@ -14,12 +14,15 @@ import { TitlePipe } from './pipes/title.pipe';
 import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pipe';
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
+import { ButtonHoverDirective } from './directives/button-hover.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     HoverDirective,
+    ButtonHoverDirective,
     MovieDetailsComponent,
     RuntimeToNumberPipe,
     TitlePipe,

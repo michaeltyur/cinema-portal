@@ -10,7 +10,9 @@ export class TitlePipe implements PipeTransform
 
         if( title )
         {
-            return title.replace(/\b\w/g, l => l.toUpperCase())
+
+          title = title.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+          return title;
         }
         else return title;
         

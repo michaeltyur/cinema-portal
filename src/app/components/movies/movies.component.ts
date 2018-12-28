@@ -29,7 +29,7 @@ export class MoviesComponent implements OnInit {
 
       movieService.movieUpdateEmitter$.subscribe(res=>
       {
-        this.updateMovie(res);
+        this.createOrUpdateMovie(res);
       });
   
   }
@@ -37,11 +37,15 @@ export class MoviesComponent implements OnInit {
     this.getListOfMovies();
   }
 
-  updateMovie(movie:Movie){
+  createOrUpdateMovie(movie:Movie){
    if (movie) {
      let index=this.movies.findIndex(film=>film.id==movie.id);
-
-     this.movies[index]=movie;
+     if (index>-1) {
+       this.movies[index]=movie;
+     }
+     else{
+      this.movies.push(movie);
+     }
    }  
   }
 

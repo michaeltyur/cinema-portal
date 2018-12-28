@@ -28,6 +28,8 @@ export class MovieService {
 
   getMovieByName(title:string):Observable<Movie>{
 
+    title=this.removeNonReadableCharacters(title);
+    
     const url = `${this.baseUrl}&t=${title}&${this.apiKey}`;
 
     return this.http.get<Movie>(url).pipe(map((res:Object)=>
@@ -69,5 +71,13 @@ export class MovieService {
           movie.year=obj['Year'];
          
       return movie;
+  }
+  private removeNonReadableCharacters(term:string):string{
+    if( term )
+        {
+            term = term.replace(/[#%]/g, '');
+            return term;
+        }
+        else return term;
   }
 }

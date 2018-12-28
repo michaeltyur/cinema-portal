@@ -10,7 +10,9 @@ export class RemoveNonEnglishLetterPipe implements PipeTransform
 
         if( title )
         {
-            return title.replace(/[^\x00-\x7F]/g, "");
+            title = title.replace(/[^\x20-\x7E]/g, '');
+            title = title.replace(/[^a-zA-Z0-9 ]/g, "");
+            return title;
         }
         else return title;
         

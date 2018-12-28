@@ -42,7 +42,7 @@ export class MovieDetailsComponent implements OnInit {
      this.movieForm=this.fb.group({
     id:[this.movie.id],
     title:   [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
-                              ValidateTitleNotExist.createValidator(this.movieService)],                                                          
+                              ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
     year:    [this.movie.year, [  Validators.required,
                               Validators.min(yearMinValue),
                               Validators.max(yearMaxValue) ]],
@@ -88,13 +88,15 @@ export class MovieDetailsComponent implements OnInit {
  }
 
  updateMovie():void{
-    if (this.movieForm.valid) {
-      if (this.title.value!=this.movie.title) {
-          this.movieService.emitMovieUpdater(this.movieForm.value);
-          this.modalService.dismissAll();           
-      }      
+    if (this.movieForm.valid) {    
+     this.movieService.emitMovieUpdater(this.movieForm.value);
+     this.modalService.dismissAll();                                  
     }
  }
-
+ setMovieImage(imageUrl:string){
+   if (imageUrl&&imageUrl!=='') {
+     this.movie.poster=imageUrl;
+   }
+ }
  
 }
