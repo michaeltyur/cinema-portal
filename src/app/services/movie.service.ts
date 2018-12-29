@@ -14,7 +14,7 @@ const httpOptions = {
 export class MovieService {
 
   movies:Movie[];
-  private baseUrl = 'http://www.omdbapi.com?plot=full';
+  private baseUrl = 'https://www.omdbapi.com?plot=full';
   private apiKey ="apikey=c391d863";
   movieRemovingEmitter$:EventEmitter<Movie>;
   movieUpdateEmitter$:EventEmitter<Movie>;
