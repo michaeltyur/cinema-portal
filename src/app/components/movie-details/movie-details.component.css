@@ -9,11 +9,19 @@ form{
     
 }
 
-.label-alert-text{
+.label-text{
     color: rgb(7, 6, 88);
     padding: 0 2px 0 2px;
     border-radius: 5px;
     background: whitesmoke;
+    font-family: Stencil;
+}
+.alert-text{
+    color: rgb(7, 6, 88);
+    padding: 0 2px 0 2px;
+    border-radius: 5px;
+    background: whitesmoke;
+    font-family: Tahoma;
 }
 img{
     width: 198px;
@@ -45,6 +53,7 @@ img{
     border-bottom-right-radius: 15px;
     border-top-left-radius: 15px;
 }
+
 .bottom-buttons{
     padding-top: 2px;
     padding-bottom: 2px;

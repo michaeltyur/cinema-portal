@@ -27,7 +27,7 @@
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{movie.title| capitalizeFirstLetter | removeNonEnglishLetter}}</h5>
           <p class="card-text">{{movie.genre}}</p>
-          <button class="btn btn-outline-dark mt-auto"
+          <button class="btn btn-outline-dark mt-auto edit-button"
                   (click)="getMovieDetails(movie)">Edit</button>
         </div>
       </div>

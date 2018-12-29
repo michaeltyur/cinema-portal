@@ -46,3 +46,21 @@ img{
 .movie-alert{
     animation-name: alert;
 }
+.card-title {
+    text-align: center;
+    font-family: Showcard Gothic;
+    font-size: 20px;
+}
+.card-text{
+    text-align: center;
+    color: #4a5055;
+    font-family: Showcard Gothic;
+}
+
+.edit-button{
+    padding-bottom: 1px;
+    padding-top: 1px;
+    font-family: Showcard Gothic;
+    font-style: italic;                                     
+    font-size: 20px;
+}

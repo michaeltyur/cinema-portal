@@ -1,16 +1,16 @@
 
 <form [formGroup]="movieForm">
   <div class="modal-header">
-    <span class="validation-alert-title label-alert-text" *ngIf="title.errors?.required">
+    <span class="validation-alert-title alert-text" *ngIf="title.errors?.required">
         Title is required
     </span>
-    <span class="validation-alert-title process label-alert-text" *ngIf="title.status==='PENDING'">
+    <span class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
         Checking...
     </span>
-    <span class="validation-alert-title success label-alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
+    <span class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
         Title is available
     </span>
-    <span class="validation-alert-title label-alert-text" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
+    <span class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
         Title already exists
     </span>
     <input formControlName="title"
@@ -32,7 +32,7 @@
     <div class="col-8">
         <div class="form-group row">
           <label for="idFormInput" 
-                 class="col-sm-2 col-form-label"><span class="label-alert-text">Id</span></label>
+                 class="col-sm-2 col-form-label"><span class="label-text">Id</span></label>
           <div class="col-sm-10">
            
             <input formControlName="id"
@@ -44,15 +44,15 @@
           </div>
       </div>
         <div class="form-group row mt-4">
-            <label for="yearFormInput" class="col-sm-2 col-form-label"><span class="label-alert-text">Year</span></label>
+            <label for="yearFormInput" class="col-sm-2 col-form-label"><span class="label-text">Year</span></label>
             <div class="col-sm-10">
-              <span class="validation-alert label-alert-text" *ngIf="year.errors?.required">
+              <span class="validation-alert alert-text" *ngIf="year.errors?.required">
                   Year is required
               </span>
-              <span class="validation-alert label-alert-text" *ngIf="year.errors?.min">
+              <span class="validation-alert alert-text" *ngIf="year.errors?.min">
                   Year must be greater than or equals {{yearMinValue}}
               </span>
-              <span class="validation-alert label-alert-text" *ngIf="year.errors?.max">
+              <span class="validation-alert alert-text" *ngIf="year.errors?.max">
                   Year must be less than or equal to {{yearMaxValue}}
               </span>
               <input formControlName="year"
@@ -65,16 +65,16 @@
         </div>
         <div class="form-group row mt-4">
             <label for="runtimeFormInput" 
-                   class="col-sm-2 col-form-label"><span class="label-alert-text">Runtime</span></label>
+                   class="col-sm-2 col-form-label"><span class="label-text">Runtime</span></label>
             <div class="col-sm-10">
               <div class="input-group mb-3">
-                  <span class="validation-alert label-alert-text" *ngIf="runtime.errors?.required">
+                  <span class="validation-alert alert-text" *ngIf="runtime.errors?.required">
                       Runtime is required
                   </span>
-                  <span class="validation-alert label-alert-text" *ngIf="runtime.errors?.min">
+                  <span class="validation-alert alert-text" *ngIf="runtime.errors?.min">
                       Year must be greater than or equals {{runtimeMinValue}}
                   </span>
-                  <span class="validation-alert label-alert-text" *ngIf="runtime.errors?.max">
+                  <span class="validation-alert alert-text" *ngIf="runtime.errors?.max">
                       Year must be greater than or equals {{runtimeMaxValue}}
                   </span>
                 <input formControlName="runtime"
@@ -92,9 +92,9 @@
         </div>
           <div class="form-group row">
               <label for="genreFormInput" 
-                     class="col-sm-2 col-form-label"><span class="label-alert-text">Genre</span></label>
+                     class="col-sm-2 col-form-label"><span class="label-text">Genre</span></label>
               <div class="col-sm-10">
-                <span class="validation-alert label-alert-text" *ngIf="genre.errors?.required">
+                <span class="validation-alert alert-text" *ngIf="genre.errors?.required">
                     Genre is required
                 </span>
                 <input formControlName="genre"
@@ -106,9 +106,9 @@
               </div>
           </div>
           <div class="form-group row mt-4">
-              <label for="directorFormInput" class="col-sm-2 col-form-label"><span class="label-alert-text">Director</span></label>
+              <label for="directorFormInput" class="col-sm-2 col-form-label"><span class="label-text">Director</span></label>
               <div class="col-sm-10">
-                <span class="validation-alert label-alert-text" *ngIf="director.errors?.required">
+                <span class="validation-alert alert-text" *ngIf="director.errors?.required">
                     Director is required
                 </span>
                 <textarea  formControlName="director"
@@ -124,9 +124,9 @@
       <div class="row ">
         <div class="col">
    <div class="form-group row mt-3">
-      <label for="posterFormInput" class="col-sm-2 col-form-label"><span class="label-alert-text">Image Url</span></label>
+      <label for="posterFormInput" class="col-sm-2 col-form-label"><span class="label-text">Image Url</span></label>
       <div class="col-sm-10">
-          <span class="validation-alert label-alert-text" *ngIf="poster.errors?.required">
+          <span class="validation-alert alert-text" *ngIf="poster.errors?.required">
               Image Url is required
           </span>
         <textarea  formControlName="poster"
