@@ -19,10 +19,13 @@
            id="titleInput" 
            value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"
            [ngStyle]="{'border-color':title.valid||title.value===movie.title ? '#ced4da' : 'red' }"> 
+     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+     </button>
   </div>
   <div class="modal-body row">
     <div class="container">
-      <div class="row">
+      <div class="row m-0">
     <!-- Image -->
     <div class="col-auto">
       <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
