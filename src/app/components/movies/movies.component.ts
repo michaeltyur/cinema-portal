@@ -60,7 +60,6 @@ export class MoviesComponent implements OnInit {
 
   getMovieDetails(movie:Movie){
     if (movie) {
-     // this.movieService.emitMovieDetails(movie);
       const modalRef = this.modalService.open(MovieDetailsComponent, { size: 'lg' });
       modalRef.componentInstance.movie = movie;
     }

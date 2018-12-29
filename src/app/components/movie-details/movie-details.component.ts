@@ -44,10 +44,10 @@ export class MovieDetailsComponent implements OnInit {
      this.movieForm=this.fb.group({
     id:[this.movie.id],
     title:   [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
-                              ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
+                                                   ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
     year:    [this.movie.year, [  Validators.required,
-                              Validators.min(yearMinValue),
-                              Validators.max(yearMaxValue) ]],
+                                  Validators.min(yearMinValue),
+                                  Validators.max(yearMaxValue) ]],
     runtime: [this.movie.runtime, [ Validators.required,
                                     Validators.min(runtimeMinValue),
                                     Validators.max(runtimeMaxValue) ]],
@@ -98,7 +98,7 @@ export class MovieDetailsComponent implements OnInit {
     }
  }
  setMovieImage(imageUrl:string){
-   if (imageUrl&&imageUrl!=='') {
+   if (imageUrl && imageUrl!=='') {
      this.movie.poster=imageUrl;
    }
  }
