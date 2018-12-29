@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable,of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Movie } from '../shared/models/movie';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +16,6 @@ export class MovieService {
   movies:Movie[];
   private baseUrl = 'http://www.omdbapi.com?plot=full';
   private apiKey ="apikey=c391d863";
-  private movieId='tt';
   movieRemovingEmitter$:EventEmitter<Movie>;
   movieUpdateEmitter$:EventEmitter<Movie>;
 

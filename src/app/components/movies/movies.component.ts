@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import{ moviesName } from '../../shared/models/consts'
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
-
-const moviesTitels="";
 
 @Component({
   selector: 'app-movies',

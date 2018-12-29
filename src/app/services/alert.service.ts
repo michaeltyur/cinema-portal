@@ -14,7 +14,7 @@ export class AlertService {
    }
 
    emitMessage(type:string,content:string){
-     if (content&&type) {
+     if(content && type) {
        this.movieAlertEmitter$.emit(new Alert(type,content))
      }
     

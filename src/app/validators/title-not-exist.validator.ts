@@ -1,6 +1,6 @@
-import {  AsyncValidatorFn, AbstractControl, ValidationErrors  } from '@angular/forms';
+import { AsyncValidatorFn, AbstractControl, ValidationErrors  } from '@angular/forms';
 import { MovieService } from '../services/movie.service';
-import { catchError, map, tap, debounceTime, take } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 export class ValidateTitleNotExist{
