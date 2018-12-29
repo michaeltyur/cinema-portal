@@ -84,7 +84,7 @@ export class MovieDetailsComponent implements OnInit {
     modalRef.result.then(result=>{
       if (result==='delete click') {
         this.movieService.emitMovieRemoving(this.movie);
-        this.alertService.emitMessage( 'success',`Movie ${this.title.value} was removed successfully`);
+        this.alertService.emitMessage( 'success',`Movie ${this.title.value} was removed localy successfully`);
         this.modalService.dismissAll();
       }
     })
@@ -93,7 +93,7 @@ export class MovieDetailsComponent implements OnInit {
  updateMovie():void{
     if (this.movieForm.valid) {    
      this.movieService.emitMovieUpdater(this.movieForm.value);
-     this.alertService.emitMessage('success',`Movie ${this.movie.title} was added successfully`);
+     this.alertService.emitMessage('success',`Movie ${this.movie.title} was added localy successfully`);
      this.modalService.dismissAll();                                  
     }
  }
