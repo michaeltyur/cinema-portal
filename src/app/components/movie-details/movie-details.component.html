@@ -26,12 +26,9 @@
   <div class="modal-body row">
     <div class="container">
       <div class="row m-0">
-    <!-- Image -->
     <div class="col-auto">
       <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
     </div>
-
-    <!-- Id -->
     <div class="col-8">
         <div class="form-group row">
           <label for="idFormInput" 
@@ -46,7 +43,6 @@
                    disabled>
           </div>
       </div>
-        <!-- Year -->
         <div class="form-group row mt-4">
             <label for="yearFormInput" class="col-sm-2 col-form-label">Year</label>
             <div class="col-sm-10">
@@ -67,7 +63,6 @@
                      [ngStyle]="{'border-color':year.invalid ? 'red' : '#ced4da' }">
             </div>
         </div>
-        <!-- Runtime -->
         <div class="form-group row mt-4">
             <label for="runtimeFormInput" 
                    class="col-sm-2 col-form-label">Runtime</label>
@@ -95,7 +90,6 @@
               </div>
             </div>
         </div>
-          <!-- Genre -->
           <div class="form-group row">
               <label for="genreFormInput" 
                      class="col-sm-2 col-form-label">Genre</label>
@@ -111,7 +105,6 @@
                        [ngStyle]="{'border-color':genre.invalid ? 'red' : '#ced4da' }">
               </div>
           </div>
-          <!-- Director -->
           <div class="form-group row mt-4">
               <label for="directorFormInput" class="col-sm-2 col-form-label">Director</label>
               <div class="col-sm-10">
@@ -126,13 +119,10 @@
                            [ngStyle]="{'border-color':director.invalid ? 'red' : '#ced4da' }"></textarea>
               </div>
           </div>
-
-
     </div> 
       </div>
       <div class="row ">
         <div class="col">
-   <!-- Image Url -->
    <div class="form-group row mt-3">
       <label for="posterFormInput" class="col-sm-2 col-form-label">Image Url</label>
       <div class="col-sm-10">
@@ -160,20 +150,17 @@
                 class="col-4 btn btn-outline-danger" 
                 appButtonHover
                 (click)="deleteConfirmation()">Delete</button>
-     
-            
+              
               <button type="button" 
                       class="col-4 btn btn-outline-success" 
                       [disabled]="!movieForm.valid"
                       appButtonHover
                       (click)="updateMovie()">Save</button>
-            
-      
+              
           <button type="button" 
                   class="col-4 btn btn-outline-dark" 
                   appButtonHover
-                  (click)="activeModal.close('Close click')">Close</button>
-      
+                  (click)="activeModal.close('Close click')">Close</button>      
     </div>
   </div>
 </form>

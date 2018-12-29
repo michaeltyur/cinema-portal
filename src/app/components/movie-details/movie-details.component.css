@@ -27,3 +27,8 @@ img{
     border-bottom-right-radius: 15px;
     border-top-left-radius: 15px;
 }
+.close :hover{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
