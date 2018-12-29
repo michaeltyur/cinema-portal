@@ -1,0 +1,9 @@
+
+<ngb-alert *ngIf="alert" 
+            [type]="alert.type" 
+            [class.movie-alert]="alert"
+            [dismissible]="false"
+            (close)="alert = null">{{alert.content}}</ngb-alert>
+
+
+

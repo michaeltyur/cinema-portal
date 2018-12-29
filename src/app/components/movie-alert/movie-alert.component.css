@@ -1,0 +1,26 @@
+.movie-alert{
+    position: absolute!important;
+    width: 450px;
+    display: inline-block!important;
+    z-index: 100;
+    font-size: 18px;
+    border-radius: 10px!important;
+    animation-name: alert-animation;
+    animation-duration: 3s;
+    -webkit-animation-name: alert-animation;
+    -webkit-animation-duration: 3s;
+}
+@-webkit-keyframes alert-animation {
+    0%   {top:50px;left:45%;}
+    45%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(0deg) scale(1.5);}
+    50%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(10deg) scale(1.5);}
+    55%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(-10deg) scale(1.5);}
+    100% {top:-100px;left:80%;  visibility: visible; opacity: 0.1;transform: rotate(10deg) scale(0.5);}
+}
+@keyframes alert-animation {
+    0%   {top:0px;left:45%;}
+    45%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(0deg) scale(1.5);}
+    50%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(10deg) scale(1.5);}
+    55%  {top:50px;left:60%;  visibility: visible; opacity: 0.7;transform: rotate(-10deg) scale(1.5);}
+    100% {top:-100px;left:80%;  visibility: visible; opacity: 0.1;transform: rotate(10deg) scale(0.5);}
+}

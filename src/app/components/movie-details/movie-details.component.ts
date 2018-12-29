@@ -2,10 +2,11 @@ import { Component, OnInit,Input  } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
-import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import{ yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
 import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
+import { AlertService } from 'src/app/services/alert.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class MovieDetailsComponent implements OnInit {
   constructor(private movieService:MovieService,
               public activeModal: NgbActiveModal,
               private modalService: NgbModal,
-             private fb: FormBuilder)
+              private fb: FormBuilder,
+              private alertService:AlertService)
  { 
   this.yearMinValue=yearMinValue;
   this.yearMaxValue=yearMaxValue;
@@ -82,6 +84,7 @@ export class MovieDetailsComponent implements OnInit {
     modalRef.result.then(result=>{
       if (result==='delete click') {
         this.movieService.emitMovieRemoving(this.movie);
+        this.alertService.emitMessage( 'success',`Movie ${this.title.value} was removed successfully`);
         this.modalService.dismissAll();
       }
     })
@@ -90,6 +93,7 @@ export class MovieDetailsComponent implements OnInit {
  updateMovie():void{
     if (this.movieForm.valid) {    
      this.movieService.emitMovieUpdater(this.movieForm.value);
+     this.alertService.emitMessage('success',`Movie ${this.movie.title} was added successfully`);
      this.modalService.dismissAll();                                  
     }
  }

@@ -15,6 +15,7 @@ import { RemoveNonEnglishLetterPipe } from './pipes/remove-non-english-letter.pi
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { ButtonHoverDirective } from './directives/button-hover.directive';
+import { MovieAlertComponent } from './components/movie-alert/movie-alert.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ButtonHoverDirective } from './directives/button-hover.directive';
     TitlePipe,
     RemoveNonEnglishLetterPipe,
     ImageUrlPipe,
-    DeleteConfirmationComponent
+    DeleteConfirmationComponent,
+    MovieAlertComponent
   ],
   imports: [
     BrowserModule,
