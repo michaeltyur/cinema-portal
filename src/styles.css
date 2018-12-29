@@ -1,6 +1,5 @@
 body{
-    background-image: url("./assets/film-background.jpg");
-    
+    background-image: url("./assets/body-background.jpg"); 
 }
 .hovered{
     transform: scale(1.05);
@@ -15,4 +14,7 @@ body{
     transition: 0.5s all;
     z-index: 100;
     border-radius: 5px;
+}
+.modal-content{
+    border-radius: 15px !important;
 }

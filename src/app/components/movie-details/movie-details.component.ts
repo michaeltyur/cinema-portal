@@ -4,7 +4,7 @@ import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-import{ yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
+import { yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
 import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
 import { AlertService } from 'src/app/services/alert.service';
 

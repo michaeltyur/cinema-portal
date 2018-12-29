@@ -34,6 +34,10 @@ img{
     border-top-right-radius: 10px!important;
 }
 .card{
+    background-image: url(../../../assets/card-background2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 10px !important;
 }
 .movie-alert{

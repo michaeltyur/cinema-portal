@@ -1,4 +1,19 @@
-.modal-header{
+.modal-content{
+    border-radius: 15px !important;
+}
+form{
+    border-radius: 15px !important;
+    background-image: url('../../../assets/card-details-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.label-alert-text{
+    color: rgb(7, 6, 88);
+    padding: 0 2px 0 2px;
+    border-radius: 5px;
+    background: whitesmoke;
 }
 img{
     width: 198px;
@@ -11,7 +26,7 @@ img{
 }
 .validation-alert{
     position: absolute;
-    top:-23px;
+    top:-24px;
     color: red;
 }
 .success{
@@ -23,12 +38,18 @@ img{
 .close{
     margin-left: 10px;
     background-color: chocolate;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top-left-radius: 15px;
+    border-radius: 15px;
 }
 .close :hover{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top-left-radius: 15px;
+}
+.bottom-buttons{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-width: 2px !important;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Magneto;
 }
