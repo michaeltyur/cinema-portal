@@ -1,7 +1,8 @@
-export const moviesName: string[]=['The Wizard of Oz',
+export const moviesName: string[]=[
+                                   'The Wizard of Oz',
                                    'Citizen Kane',
                                    'Get Out',
-                                    'The Green Mile',
+                                   'The Green Mile',
                                    'The Mist',
                                    'Thinner',
                                    'The Shawshank Redemption',

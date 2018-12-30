@@ -1,3 +1,7 @@
+html body{
+   height: 100%;
+   margin: 0;
+}
 body{
     background-image: url("./assets/body-background.jpg"); 
 }
@@ -18,3 +22,4 @@ body{
 .modal-content{
     border-radius: 15px !important;
 }
+
