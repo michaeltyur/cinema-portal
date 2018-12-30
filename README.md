@@ -1,6 +1,7 @@
 # HeroloCinema
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.8.
+Angulyar project completed in preparation for the working interview
+## The working version can be seen by clicking on the link:
+https://cinema-project-40a56.firebaseapp.com/
 
 ## Development server
 
