@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/herolo-cinema",
+    "public": "dist/cinema-portal",
     "ignore": [
       "firebase.json",
       "**/.*",

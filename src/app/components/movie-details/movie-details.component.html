@@ -1,18 +1,21 @@
 
 <form [formGroup]="movieForm">
   <div class="modal-header">
-    <span class="validation-alert-title alert-text" *ngIf="title.errors?.required">
-        Title is required
-    </span>
-    <span class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
-        Checking...
-    </span>
-    <span class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
-        Title is available
-    </span>
-    <span class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
-        Title already exists
-    </span>
+     <div class="validation-alert-title alert-text" *ngIf="title.invalid && title.touched">
+         <span  *ngIf="title.errors?.required">
+             Title is required
+         </span>
+         <span class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
+             Checking...
+         </span>
+         <span class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
+             Title is available
+         </span>
+         <span class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
+             Title already exists
+         </span>
+     </div> 
+  
     <input formControlName="title"
            type="text" 
            class="form-control form-control-lg mt-3" 
