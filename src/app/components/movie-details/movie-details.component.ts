@@ -7,6 +7,8 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
 import { yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
 import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
 import { AlertService } from 'src/app/services/alert.service';
+import { ImageValidUrlValidator } from 'src/app/validators/image-valid-url.validator';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class MovieDetailsComponent implements OnInit {
               public activeModal: NgbActiveModal,
               private modalService: NgbModal,
               private fb: FormBuilder,
-              private alertService:AlertService)
+              private alertService:AlertService,
+              private httpClient:HttpClient)
  { 
   this.yearMinValue=yearMinValue;
   this.yearMaxValue=yearMaxValue;
@@ -43,17 +46,17 @@ export class MovieDetailsComponent implements OnInit {
 
      this.movieForm=this.fb.group({
     id:[{value:this.movie.id, disabled:true}],
-    title:   [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
-                                                   ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
-    year:    [this.movie.year, [  Validators.required,
-                                  Validators.min(yearMinValue),
-                                  Validators.max(yearMaxValue) ]],
-    runtime: [this.movie.runtime, [ Validators.required,
-                                    Validators.min(runtimeMinValue),
-                                    Validators.max(runtimeMaxValue) ]],
-    genre:   [this.movie.genre, Validators.required],
+    title:    [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
+                                                     ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
+    year:     [this.movie.year, [  Validators.required,
+                                   Validators.min(yearMinValue),
+                                   Validators.max(yearMaxValue) ]],
+    runtime:  [this.movie.runtime, [ Validators.required,
+                                     Validators.min(runtimeMinValue),
+                                     Validators.max(runtimeMaxValue) ]],
+    genre:    [this.movie.genre, Validators.required],
     director: [this.movie.director, Validators.required],
-    poster: [this.movie.poster, Validators.required]
+    poster:   [this.movie.poster, Validators.required,ImageValidUrlValidator.createValidator(this.httpClient)]
     });
   }
   get id() {
@@ -101,6 +104,9 @@ export class MovieDetailsComponent implements OnInit {
    if (imageUrl && imageUrl!=='') {
      this.movie.poster=imageUrl;
    }
+ }
+ imageLoadError(){
+  this.movie.poster="../../assets/No_Image_Available.jpg";
  }
  
 }

@@ -1,28 +1,33 @@
 
 <form [formGroup]="movieForm">
   <div class="modal-header">
-     <div class="validation-alert-title alert-text" *ngIf="title.invalid && title.touched">
-         <span  *ngIf="title.errors?.required">
+     <div  *ngIf="title.touched">
+         <div class="validation-alert-title alert-text"  *ngIf="title.invalid &&title.errors?.required">
              Title is required
-         </span>
-         <span class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
+         </div>
+         <div class="validation-alert-title alert-text" *ngIf="title.invalid &&title.errors.minlength">
+             Title must be greater than {{title.errors.minlength.requiredLength}}
+         </div>
+         <div class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
              Checking...
-         </span>
-         <span class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
+         </div>
+         <div class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
              Title is available
-         </span>
-         <span class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist&&title.value!==movie.title">
+         </div>
+         <div class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist && title.value!==movie.title">
              Title already exists
-         </span>
+         </div>
      </div> 
   
     <input formControlName="title"
            type="text" 
            class="form-control form-control-lg mt-3" 
            id="titleInput" 
-           value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"
-           [ngStyle]="{'border-color':title.valid||title.value===movie.title ? '#ced4da' : 'red' }"> 
-     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+           value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"> 
+     <button type="button" 
+             class="close" 
+             aria-label="Close" 
+            (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
      </button>
   </div>
@@ -30,9 +35,14 @@
     <div class="container">
       <div class="row m-0">
     <div class="col-auto">
-      <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+      <img class="card-img-top" 
+           src="{{movie.poster}}" 
+           onError="this.src='../../assets/No_Image_Available.jpg'"
+           alt="Card image cap">
     </div>
     <div class="col-8">
+
+        <!-- Id -->
         <div class="form-group row">
           <label for="idFormInput" 
                  class="col-sm-2 col-form-label"><span class="label-text">Id</span></label>
@@ -45,46 +55,56 @@
                    value="{{movie.id}}">
           </div>
       </div>
+        <!-- End Id -->
+
+        <!-- Year -->
         <div class="form-group row mt-4">
             <label for="yearFormInput" class="col-sm-2 col-form-label"><span class="label-text">Year</span></label>
             <div class="col-sm-10">
-              <span class="validation-alert alert-text" *ngIf="year.errors?.required">
-                  Year is required
-              </span>
-              <span class="validation-alert alert-text" *ngIf="year.errors?.min">
-                  Year must be greater than or equals {{yearMinValue}}
-              </span>
-              <span class="validation-alert alert-text" *ngIf="year.errors?.max">
-                  Year must be less than or equal to {{yearMaxValue}}
-              </span>
+                    <div *ngIf="year.invalid && year.touched">
+                       <span class="validation-alert alert-text" *ngIf="year.errors?.required">
+                           Year is required
+                       </span>
+                        <span class="validation-alert alert-text" *ngIf="year.errors?.min">
+                            Year must be greater than or equals {{yearMinValue}}
+                        </span>
+                        <span class="validation-alert alert-text" *ngIf="year.errors?.max">
+                            Year must be less than or equal to {{yearMaxValue}}
+                        </span>
+                    </div>
+             
               <input formControlName="year"
                      type="number" 
                      class="form-control" 
                      id="yearFormInput" 
-                     value="{{movie.year}}"
-                     [ngStyle]="{'border-color':year.invalid ? 'red' : '#ced4da' }">
+                     value="{{movie.year}}">
             </div>
         </div>
+        <!-- End Year -->
+
+        <!-- Runtime -->
         <div class="form-group row mt-4">
             <label for="runtimeFormInput" 
                    class="col-sm-2 col-form-label"><span class="label-text">Runtime</span></label>
             <div class="col-sm-10">
               <div class="input-group mb-3">
-                  <span class="validation-alert alert-text" *ngIf="runtime.errors?.required">
+                  <div *ngIf="runtime.invalid && runtime.touched">
+                        <span class="validation-alert alert-text" *ngIf="runtime.errors?.required">
                       Runtime is required
                   </span>
                   <span class="validation-alert alert-text" *ngIf="runtime.errors?.min">
-                      Year must be greater than or equals {{runtimeMinValue}}
+                      Year must be greater than or equals {{runtime.errors.min.requiredMin}}
                   </span>
                   <span class="validation-alert alert-text" *ngIf="runtime.errors?.max">
                       Year must be greater than or equals {{runtimeMaxValue}}
                   </span>
+                  </div>
+                
                 <input formControlName="runtime"
-                                   type="number" 
-                                   class="form-control" 
-                                   id="runtimeFormInput" 
-                                   value="{{movie.runtime | runtimeToNumber}}"
-                                   [ngStyle]="{'border-color':runtime.invalid ? 'red' : '#ced4da' }">
+                       type="number" 
+                       class="form-control" 
+                       id="runtimeFormInput" 
+                       value="{{movie.runtime | runtimeToNumber}}">
                 <div class="input-group-append">
                   <span class="input-group-text" 
                         id="basic-addon2">minutes</span>
@@ -92,54 +112,69 @@
               </div>
             </div>
         </div>
+        <!--End Runtime -->
+
+        <!-- Genre -->
           <div class="form-group row">
               <label for="genreFormInput" 
                      class="col-sm-2 col-form-label"><span class="label-text">Genre</span></label>
               <div class="col-sm-10">
-                <span class="validation-alert alert-text" *ngIf="genre.errors?.required">
+                <span class="validation-alert alert-text" *ngIf="genre.touched && genre.errors?.required">
                     Genre is required
                 </span>
                 <input formControlName="genre"
                        type="text"
                        class="form-control" 
                        id="genreFormInput" 
-                       value="{{movie.genre}}"
-                       [ngStyle]="{'border-color':genre.invalid ? 'red' : '#ced4da' }">
+                       value="{{movie.genre}}">
               </div>
           </div>
+          <!--End Genre -->
+
+          <!-- Director -->
           <div class="form-group row mt-4">
               <label for="directorFormInput" class="col-sm-2 col-form-label"><span class="label-text">Director</span></label>
               <div class="col-sm-10">
-                <span class="validation-alert alert-text" *ngIf="director.errors?.required">
+                <span class="validation-alert alert-text" *ngIf="director.touched && director.errors?.required">
                     Director is required
                 </span>
                 <textarea  formControlName="director"
                            type="text"
                            class="form-control" 
                            id="directorFormInput" 
-                           value="{{movie.director}}"
-                           [ngStyle]="{'border-color':director.invalid ? 'red' : '#ced4da' }"></textarea>
+                           value="{{movie.director}}"></textarea>
               </div>
           </div>
+          <!--End Director -->
+
     </div> 
       </div>
       <div class="row ">
         <div class="col">
+
+   <!-- Poster -->
    <div class="form-group row mt-3">
       <label for="posterFormInput" class="col-sm-2 col-form-label"><span class="label-text">Image Url</span></label>
       <div class="col-sm-10">
-          <span class="validation-alert alert-text" *ngIf="poster.errors?.required">
-              Image Url is required
-          </span>
+          <div *ngIf="poster.invalid && poster.touched">
+              <span class="validation-alert alert-text" *ngIf="poster.errors?.required">
+                 Image Url is required
+              </span>
+              <span class="validation-alert alert-text" *ngIf="poster.errors?.imageValid">
+                    Image Url is not valid
+              </span>
+          </div>
+          
         <textarea  formControlName="poster"
                    type="text"
                    class="form-control" 
                    id="posterFormInput" 
                    value="{{movie.poster | localImageUrlHider}}"
-                   (keyup)="setMovieImage(poster.value)"
-                   [ngStyle]="{'border-color':poster.invalid ? 'red' : '#ced4da' }"></textarea>
+                   (keyup)="setMovieImage(poster.value)"></textarea>
       </div>
   </div>
+  <!-- End Poster -->
+
         </div>
   
       </div>

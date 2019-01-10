@@ -60,3 +60,6 @@ img{
     font-weight: bold;
     font-family: Magneto;
 }
+.form-control.ng-invalid.ng-touched{
+    border-color:red; 
+}
