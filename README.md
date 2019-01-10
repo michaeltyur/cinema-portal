@@ -1,4 +1,4 @@
-# HeroloCinema
+# CinemaPortal
 Angulyar project completed in preparation for the working interview
 ## The working version can be seen by clicking on the link:
 https://cinema-project-40a56.firebaseapp.com/
