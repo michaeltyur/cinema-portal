@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-auto text-left">
-         <h3>Welcome to Herolo Cinema </h3>
+         <h3>Welcome to Cinema Portal </h3>
       </div>
       <div class="col-auto">
         <app-movie-alert></app-movie-alert>
@@ -20,7 +20,8 @@
 <div class="container movies-container">
   <div class="row">
     <div class="col d-flex align-items-stretch mt-3" 
-         *ngFor="let movie of movies">
+         *ngFor="let movie of movies"
+         (click)="getMovieDetails(movie)">
       <div class="card rounded" 
            style="width: 18rem;"
            appHover>
