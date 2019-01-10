@@ -42,7 +42,7 @@ export class MovieDetailsComponent implements OnInit {
     }
 
      this.movieForm=this.fb.group({
-    id:[this.movie.id],
+    id:[{value:this.movie.id, disabled:true}],
     title:   [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
                                                    ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
     year:    [this.movie.year, [  Validators.required,
@@ -92,7 +92,7 @@ export class MovieDetailsComponent implements OnInit {
 
  updateMovie():void{
     if (this.movieForm.valid) {    
-     this.movieService.emitMovieUpdater(this.movieForm.value);
+     this.movieService.emitMovieUpdater(this.movieForm.getRawValue());
      this.alertService.emitMessage('success',`Movie ${this.movie.title} was added localy successfully`);
      this.modalService.dismissAll();                                  
     }
