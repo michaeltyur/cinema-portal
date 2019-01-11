@@ -29,7 +29,7 @@ img{
 }
 .validation-alert-title{
     position: absolute;
-    top:5px;
+    top:-8px;
     color: red;
 }
 .validation-alert{
@@ -44,7 +44,9 @@ img{
     color:darkslategray;
 }
 .close{
-    margin-left: 10px;
+    width: 55px;
+    height: 55px;
+    margin-right: -46px !important;
     background-color: chocolate;
     border-radius: 15px;
 }
