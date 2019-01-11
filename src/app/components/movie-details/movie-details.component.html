@@ -1,29 +1,28 @@
 
 <form [formGroup]="movieForm">
   <div class="modal-header">
-     <div  *ngIf="title.touched">
-         <div class="validation-alert-title alert-text"  *ngIf="title.invalid &&title.errors?.required">
-             Title is required
+
+      <div class="validation-alert-title alert-text"  *ngIf="title.touched && title.errors?.required">
+          Title is required
+      </div>
+         <div class="validation-alert-title success alert-text" *ngIf="title.status==='VALID' && title.value!==movie.title">
+             Title is available
          </div>
-         <div class="validation-alert-title alert-text" *ngIf="title.invalid &&title.errors.minlength">
+         <div class="validation-alert-title alert-text" *ngIf="title.invalid && title.errors.minlength">
              Title must be greater than {{title.errors.minlength.requiredLength}}
          </div>
          <div class="validation-alert-title process alert-text" *ngIf="title.status==='PENDING'">
              Checking...
          </div>
-         <div class="validation-alert-title success alert-text" *ngIf="title.status==='VALID'&&title.value!==movie.title">
-             Title is available
-         </div>
          <div class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist && title.value!==movie.title">
              Title already exists
          </div>
-     </div> 
+
   
     <input formControlName="title"
            type="text" 
            class="form-control form-control-lg mt-3" 
-           id="titleInput" 
-           value="{{movie.title | capitalizeFirstLetter | removeNonEnglishLetter}}"> 
+           id="titleInput" > 
      <button type="button" 
              class="close" 
              aria-label="Close" 
@@ -51,8 +50,7 @@
             <input formControlName="id"
                    type="text" 
                    class="form-control" 
-                   id="idFormInput" 
-                   value="{{movie.id}}">
+                   id="idFormInput">
           </div>
       </div>
         <!-- End Id -->
@@ -61,23 +59,20 @@
         <div class="form-group row mt-4">
             <label for="yearFormInput" class="col-sm-2 col-form-label"><span class="label-text">Year</span></label>
             <div class="col-sm-10">
-                    <div *ngIf="year.invalid && year.touched">
-                       <span class="validation-alert alert-text" *ngIf="year.errors?.required">
-                           Year is required
-                       </span>
-                        <span class="validation-alert alert-text" *ngIf="year.errors?.min">
-                            Year must be greater than or equals {{yearMinValue}}
-                        </span>
-                        <span class="validation-alert alert-text" *ngIf="year.errors?.max">
-                            Year must be less than or equal to {{yearMaxValue}}
-                        </span>
-                    </div>
+               <span class="validation-alert alert-text" *ngIf="year.touched && year.errors?.required">
+                   Year is required
+               </span>
+                <span class="validation-alert alert-text" *ngIf="year.errors?.min">
+                    Year must be greater than or equals {{yearMinValue}}
+                </span>
+                <span class="validation-alert alert-text" *ngIf="year.errors?.max">
+                    Year must be less than or equal to {{yearMaxValue}}
+                </span>     
              
               <input formControlName="year"
                      type="number" 
                      class="form-control" 
-                     id="yearFormInput" 
-                     value="{{movie.year}}">
+                     id="yearFormInput">
             </div>
         </div>
         <!-- End Year -->
@@ -88,8 +83,8 @@
                    class="col-sm-2 col-form-label"><span class="label-text">Runtime</span></label>
             <div class="col-sm-10">
               <div class="input-group mb-3">
-                  <div *ngIf="runtime.invalid && runtime.touched">
-                        <span class="validation-alert alert-text" *ngIf="runtime.errors?.required">
+
+                 <span class="validation-alert alert-text" *ngIf="runtime.touched && runtime.errors?.required">
                       Runtime is required
                   </span>
                   <span class="validation-alert alert-text" *ngIf="runtime.errors?.min">
@@ -98,7 +93,6 @@
                   <span class="validation-alert alert-text" *ngIf="runtime.errors?.max">
                       Year must be greater than or equals {{runtimeMaxValue}}
                   </span>
-                  </div>
                 
                 <input formControlName="runtime"
                        type="number" 
@@ -125,8 +119,7 @@
                 <input formControlName="genre"
                        type="text"
                        class="form-control" 
-                       id="genreFormInput" 
-                       value="{{movie.genre}}">
+                       id="genreFormInput">
               </div>
           </div>
           <!--End Genre -->
@@ -138,11 +131,10 @@
                 <span class="validation-alert alert-text" *ngIf="director.touched && director.errors?.required">
                     Director is required
                 </span>
-                <textarea  formControlName="director"
-                           type="text"
-                           class="form-control" 
-                           id="directorFormInput" 
-                           value="{{movie.director}}"></textarea>
+                <input  formControlName="director"
+                        type="text"
+                        class="form-control" 
+                        id="directorFormInput">
               </div>
           </div>
           <!--End Director -->
@@ -156,14 +148,13 @@
    <div class="form-group row mt-3">
       <label for="posterFormInput" class="col-sm-2 col-form-label"><span class="label-text">Image Url</span></label>
       <div class="col-sm-10">
-          <div *ngIf="poster.invalid && poster.touched">
-              <span class="validation-alert alert-text" *ngIf="poster.errors?.required">
-                 Image Url is required
-              </span>
-              <span class="validation-alert alert-text" *ngIf="poster.errors?.imageValid">
-                    Image Url is not valid
-              </span>
-          </div>
+
+            <span class="validation-alert alert-text" *ngIf="poster.errors?.required">
+               Image Url is required
+            </span>
+            <span class="validation-alert alert-text" *ngIf="poster.errors?.imageValid">
+                Image Url is not valid
+            </span>
           
         <textarea  formControlName="poster"
                    type="text"

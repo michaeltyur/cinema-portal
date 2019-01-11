@@ -9,12 +9,6 @@ export class ImageValidUrlValidator{
   {
     return (control: AbstractControl):  Promise<{ [key: string]: any } | null> =>
     {
-
-        // var img = new Image();
-
-        // img.onload = function() {  return of(null) };
-        // img.onerror = function() { return of({'imageValid': true})};
-        // img.src = control.value;
         return http.get(control.value,{responseType: 'text'}).toPromise()
         .then(success=>
             {
@@ -24,18 +18,6 @@ export class ImageValidUrlValidator{
             {
                 return {'imageValid': true}
             });
-        // pipe(
-        //     map(success=>
-        //         {
-        //             debugger;
-        //             if (success) {
-        //                 return null;
-        //             }
-        //             else{
-        //                 return {'imageValid': true};
-        //             }
-                    
-        //         }));
 
     }
                                          
