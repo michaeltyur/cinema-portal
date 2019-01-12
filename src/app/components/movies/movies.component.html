@@ -24,7 +24,10 @@
       <div class="card rounded" 
            style="width: 18rem;"
            appHover>
-        <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+        <img class="card-img-top" 
+             src="{{movie.poster}}" 
+             onError="this.src='../../assets/No_Image_Available.jpg'"
+             alt="Card image cap">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{movie.title| capitalizeFirstLetter | removeNonEnglishLetter}}</h5>
           <p class="card-text">{{movie.genre}}</p>

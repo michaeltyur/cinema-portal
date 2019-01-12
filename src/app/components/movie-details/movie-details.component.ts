@@ -4,11 +4,11 @@ import { Movie } from 'src/app/shared/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-import { yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue } from '../../shared/models/consts'
+import { yearMinValue,yearMaxValue,runtimeMinValue,runtimeMaxValue, defaultImage } from '../../shared/models/consts'
 import { ValidateTitleNotExist } from 'src/app/validators/title-not-exist.validator';
 import { AlertService } from 'src/app/services/alert.service';
-import { ImageValidUrlValidator } from 'src/app/validators/image-valid-url.validator';
 import { HttpClient } from '@angular/common/http';
+import { WhitespaceValidator } from 'src/app/validators/whitespace.validator';
 
 
 @Component({
@@ -46,7 +46,7 @@ export class MovieDetailsComponent implements OnInit {
 
      this.movieForm=this.fb.group({
     id:[{value:this.movie.id, disabled:true}],
-    title:    [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2)]) , 
+    title:    [this.movie.title, Validators.compose([Validators.required, Validators.minLength(2),WhitespaceValidator]) , 
                                                      ValidateTitleNotExist.createValidator(this.movieService,this.movie.title)],                                                          
     year:     [this.movie.year, [  Validators.required,
                                    Validators.min(yearMinValue),
@@ -56,7 +56,7 @@ export class MovieDetailsComponent implements OnInit {
                                      Validators.max(runtimeMaxValue) ]],
     genre:    [this.movie.genre, Validators.required],
     director: [this.movie.director, Validators.required],
-    poster:   [this.movie.poster, Validators.required,ImageValidUrlValidator.createValidator(this.httpClient)]
+    poster:   [this.movie.poster, Validators.required]
     });
   }
   get id() {
@@ -100,13 +100,10 @@ export class MovieDetailsComponent implements OnInit {
      this.modalService.dismissAll();                                  
     }
  }
- setMovieImage(imageUrl:string){
-   if (imageUrl && imageUrl!=='') {
-     this.movie.poster=imageUrl;
-   }
- }
- imageLoadError(){
-  this.movie.poster="../../assets/No_Image_Available.jpg";
- }
+//  setMovieImage(imageUrl:string){
+//    if (imageUrl && imageUrl!=='') {
+//      this.movie.poster=imageUrl;
+//    }
+ //}
  
 }

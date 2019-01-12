@@ -20,7 +20,9 @@
               <div class="validation-alert-title alert-text" *ngIf="title.errors?.titleExist && title.value!==movie.title">
                 Title already exists
               </div>
-
+              <div class="validation-alert-title alert-text" *ngIf="title.errors?.whitespace">
+                    Title are not start with space
+              </div>
               <input formControlName="title"
            type="text" 
            class="form-control form-control-lg mt-3" 
@@ -44,7 +46,7 @@
       <div class="row m-0">
     <div class="col-auto">
       <img class="card-img-top" 
-           src="{{movie.poster}}" 
+           src="{{posterInput.value}}" 
            onError="this.src='../../assets/No_Image_Available.jpg'"
            alt="Card image cap">
     </div>
@@ -167,11 +169,11 @@
             </span>
           
         <textarea  formControlName="poster"
+                   #posterInput
                    type="text"
                    class="form-control" 
                    id="posterFormInput" 
-                   value="{{movie.poster | localImageUrlHider}}"
-                   (keyup)="setMovieImage(poster.value)"></textarea>
+                   value="{{movie.poster | localImageUrlHider}}"></textarea>
       </div>
   </div>
   <!-- End Poster -->
