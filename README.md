@@ -4,7 +4,7 @@ Angulyar project completed in preparation for the working interview
 ## The working version can be seen by clicking on the link:
 https://cinema-project-40a56.firebaseapp.com/
 
-##After downloading run `npm install` to install the missing packages
+After downloading run `npm install` to install the missing packages
 
 ## Development server
 
