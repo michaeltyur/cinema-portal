@@ -2,7 +2,10 @@
 Angulyar project completed in preparation for the working interview
 
 ## The working version can be seen by clicking on the link:
-https://cinema-project-40a56.firebaseapp.com/
+firebase hosting<br>
+https://cinema-project-40a56.firebaseapp.com/<br>
+github pages<br>
+https://michaeltyur.github.io/cinema-portal/<br>
 
 After downloading run `npm install` to install the missing packages
 
