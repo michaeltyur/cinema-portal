@@ -6,6 +6,8 @@ firebase hosting<br>
 https://cinema-project-40a56.firebaseapp.com/<br>
 github pages<br>
 https://michaeltyur.github.io/cinema-portal/<br>
+Heroku<br>
+https://cinema-demo-project.herokuapp.com/<br>
 
 After downloading run `npm install` to install the missing packages
 
