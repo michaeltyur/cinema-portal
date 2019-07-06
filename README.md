@@ -3,11 +3,11 @@ Angular 7 based project , web api, reactive forms asynchronous validation implem
 
 ## The working version can be seen by clicking on the link:
 firebase hosting<br>
-https://cinema-project-40a56.,web api,reactive forms, asynchrone validationfirebaseapp.com/<br>
+https://cinema-project-40a56.web.app<br>
 github pages<br>
-https://michaeltyur.github.io/cinema-portal/<br>
+https://michaeltyur.github.io/cinema-portal<br>
 Heroku<br>
-https://cinema-demo-project.herokuapp.com/<br>
+https://cinema-demo-project.herokuapp.com<br>
 
 After downloading run `npm install` to install the missing packages
 
