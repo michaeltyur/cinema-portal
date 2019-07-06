@@ -1,9 +1,9 @@
 # CinemaPortal
-Angulyar project completed in preparation for the working interview
+Angular 7 based project , web api, reactive forms asynchronous validation implementation
 
 ## The working version can be seen by clicking on the link:
 firebase hosting<br>
-https://cinema-project-40a56.firebaseapp.com/<br>
+https://cinema-project-40a56.,web api,reactive forms, asynchrone validationfirebaseapp.com/<br>
 github pages<br>
 https://michaeltyur.github.io/cinema-portal/<br>
 Heroku<br>
